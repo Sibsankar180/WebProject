@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prime Number Checker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        input, button {
+            padding: 10px;
+            font-size: 16px;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Prime Number Checker</h2>
+    <form onsubmit="checkPrime(event)">
+        <input type="number" id="numberInput" placeholder="Enter a number" required>
+        <button type="submit">Check</button>
+    </form>
+    <p id="result"></p>
+
+    <script>
+        function isPrime(num) {
+            if (num < 2) return false;
+            for (let i = 2; i <= Math.sqrt(num); i++) {
+                if (num % i === 0) return false;
+            }
+            return true;
+        }
+
+        function checkPrime(event) {
+            event.preventDefault();
+            let num = parseInt(document.getElementById("numberInput").value);
+            let resultText = isPrime(num) ? `${num} is a Prime Number` : `${num} is NOT a Prime Number`;
+            document.getElementById("result").innerText = resultText;
+        }
+    </script>
+
+</body>
+</html>
